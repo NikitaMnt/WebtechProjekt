@@ -1,4 +1,4 @@
-package todoliste;
+package com.example.webtech1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,19 +15,19 @@ public class ToDoController {
 
     Logger logger = LoggerFactory.getLogger(ToDoController.class);
 
-    @PostMapping("/things")
-    public ToDo createThing(@RequestBody ToDo toDo) {
+    @PostMapping("/todos")
+    public ToDo createToDo(@RequestBody ToDo toDo) {
         return service.save(toDo);
     }
 
-    @GetMapping("/things/{id}")
+    @GetMapping("/todos/{id}")
     public ToDo getToDo(@PathVariable String id) {
         logger.info("GET request on route things with {}", id);
         Long thingId = Long.parseLong(id);
         return service.get(thingId);
     }
 
-    @GetMapping("/things")
+    @GetMapping("/todos")
     public List<ToDo> getAllToDos() {
         return service.getAll();
     }

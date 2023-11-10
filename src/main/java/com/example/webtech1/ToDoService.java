@@ -1,4 +1,4 @@
-package todoliste;
+package com.example.webtech1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
