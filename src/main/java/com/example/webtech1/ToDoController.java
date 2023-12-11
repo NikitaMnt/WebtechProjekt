@@ -4,11 +4,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
+
 @RestController
 public class ToDoController {
+
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/todos/**") // Passe den Pfad entsprechend deiner API-Routen an
+                .allowedOrigins("http://localhost:PORT") // Erlaube Anfragen von diesem Ursprung (ersetze PORT durch deinen Frontend-Port)
+                .allowedMethods("GET", "POST", "PUT", "DELETE"); // Erlaubte HTTP-Methoden
+    }
 
     @Autowired
     ToDoService service;
