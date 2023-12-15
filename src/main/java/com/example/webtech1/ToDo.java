@@ -9,11 +9,11 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String taetigkeit;
-    private String erledigt;
+    private Boolean erledigt;
 
     public ToDo() {}
 
-    public ToDo(String taetigkeit, String erledigt) {
+    public ToDo(String taetigkeit, Boolean erledigt) {
         this.taetigkeit = taetigkeit;
         this.erledigt = erledigt;
     }
@@ -34,11 +34,11 @@ public class ToDo {
         this.taetigkeit = taetigkeit;
     }
 
-    public String getErledigt() {
+    public Boolean getErledigt() {
         return erledigt;
     }
 
-    public void setErledigt(String erledigt) {
+    public void setErledigt(Boolean erledigt) {
         this.erledigt = erledigt;
     }
 
