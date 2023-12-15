@@ -20,6 +20,8 @@ public class ToDoService {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
+    public void delete(ToDo toDo){ repo.delete(toDo);}
+
     public List<ToDo> getAll() {
         Iterable<ToDo> iterator = repo.findAll();
         List<ToDo> toDos = new ArrayList<ToDo>();

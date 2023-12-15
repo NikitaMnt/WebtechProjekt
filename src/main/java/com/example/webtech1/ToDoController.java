@@ -42,4 +42,10 @@ public class ToDoController {
         return service.getAll();
     }
 
+    @DeleteMapping("/todos/{id}")
+    public void deleteToDo(@PathVariable long id) {
+       ToDo tempToDo = new ToDo();
+       tempToDo.setId(id);
+        service.delete(tempToDo);
+    }
 }
