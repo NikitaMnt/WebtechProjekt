@@ -10,7 +10,6 @@ import java.util.List;
 
 
 @CrossOrigin(origins = "http://localhost:5173")
-
 @RestController
 public class ToDoController {
 
@@ -22,6 +21,10 @@ public class ToDoController {
 
     @Autowired
     ToDoService service;
+    @Autowired
+    private UserBodyRepository userRepository;
+    @Autowired
+    private ToDoRepository todoRepository;
 
     Logger logger = LoggerFactory.getLogger(ToDoController.class);
 
@@ -48,4 +51,5 @@ public class ToDoController {
        tempToDo.setId(id);
         service.delete(tempToDo);
     }
+
 }

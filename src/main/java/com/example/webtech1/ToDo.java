@@ -1,5 +1,6 @@
 package com.example.webtech1;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +12,18 @@ public class ToDo {
     private String taetigkeit;
     private Boolean erledigt;
 
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private UserBody userBody;
+
     public ToDo() {}
 
     public ToDo(String taetigkeit, Boolean erledigt) {
         this.taetigkeit = taetigkeit;
         this.erledigt = erledigt;
     }
+
 
     public Long getId() {
         return id;
@@ -40,6 +47,14 @@ public class ToDo {
 
     public void setErledigt(Boolean erledigt) {
         this.erledigt = erledigt;
+    }
+
+    public UserBody getUserBody() {
+        return userBody;
+    }
+
+    public void setUserBody(UserBody userBody) {
+        this.userBody = userBody;
     }
 
 
