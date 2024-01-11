@@ -45,11 +45,19 @@ public class ToDoController {
         return service.getAll();
     }
 
-    @DeleteMapping("/todos/{id}")
+
+    @DeleteMapping("/users/{username}/todos/{id}")
     public void deleteToDo(@PathVariable long id) {
-       ToDo tempToDo = new ToDo();
-       tempToDo.setId(id);
-        service.delete(tempToDo);
+        ToDo todo = service.get(id);
+        service.delete(todo);
+    }
+
+    @PutMapping("/todos/{id}")
+    public ToDo updateToDo(@PathVariable long id, @RequestBody ToDo updatedToDo){
+        ToDo existingToDo = service.get(id);
+        existingToDo.setTaetigkeit(updatedToDo.getTaetigkeit());
+        existingToDo.setErledigt(updatedToDo.getErledigt());
+        return service.save(existingToDo);
     }
 
 }
